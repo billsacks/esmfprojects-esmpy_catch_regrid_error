@@ -100,4 +100,7 @@ field3.data[:] = 1.0
 field4 = esmpy.Field(grid4, staggerloc=esmpy.StaggerLoc.CENTER)
 
 # This shouldn't work:
-regrid_should_fail = esmpy.RegridFromFile(field3, field4, weight_file)
+try:
+    regrid_should_fail = esmpy.RegridFromFile(field3, field4, weight_file)
+except ValueError:
+    print("Do something here to handle the error")
